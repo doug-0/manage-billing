@@ -39,5 +39,6 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'no-console': 'off',
   },
 };
