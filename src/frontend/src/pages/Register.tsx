@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import axios from 'axios';
 import checkDataUser from '../utils/validateData';
 
-export default function Register() {
+export default function Register(): JSX.Element {
   // const navigate = useNavigate();
   const [emailUser, setEmailUser] = useState('');
   const [passUser, setPassUser] = useState('');

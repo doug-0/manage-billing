@@ -1,4 +1,4 @@
-export default function Treatments() {
+export default function Treatments(): JSX.Element {
   return (
     <div>Treatments</div>
   );
