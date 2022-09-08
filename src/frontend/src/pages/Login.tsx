@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';
+import checkDataUser from '../utils/validateData';
 
 export default function Login() {
   // const navigate = useNavigate();
   const [emailUser, setEmailUser] = useState('');
   const [passUser, setPassUser] = useState('');
-
-  const checkDataUser = (): boolean => {
-    const regexEmail = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
-    const MIN_NUMBER = 6;
-
-    return !(regexEmail.test(emailUser) && passUser.length >= MIN_NUMBER);
-  };
+  // const BASE_URL = process.env.REACT_APP_API_LINK;
 
   const loginUser = async (email: string, password: string): Promise<void> => {
     const headers = {
@@ -55,7 +50,7 @@ export default function Login() {
         <div>
           <button
             type="button"
-            disabled={checkDataUser()}
+            disabled={checkDataUser(emailUser, passUser)}
             onClick={() => loginUser(emailUser, passUser)}
           >
             Login
