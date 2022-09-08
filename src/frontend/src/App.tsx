@@ -1,9 +1,9 @@
-function App() {
+import Router from './routes/Routes';
+
+import './App.css';
+
+export default function App() {
   return (
-    <div>
-      Olá
-    </div>
+    <Router />
   );
 }
-
-export default App;
