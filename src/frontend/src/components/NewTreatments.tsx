@@ -4,41 +4,51 @@ export default function NewTreatments(): JSX.Element {
   return (
     <div>
       <form>
-        Nome do paciente:
-        { ' ' }
-        <input
-          type="text"
-        />
-        Nome do tratamento:
-        { ' ' }
-        <input
-          type="text"
-        />
-        Forma de pagamento:
-        { ' ' }
-        <select>
-          <option>----</option>
-          <option>Pix</option>
-          <option>Cartão</option>
-        </select>
-        Parcelas:
-        { ' ' }
-        <select>
-          <option>----</option>
-          {
-            parcel.map((el) => (
-              <option
-                key={el}
-              >
-                {el + 1}
-                x
-              </option>
-            ))
-          }
-        </select>
-        Data do atendimento:
-        { ' ' }
-        <input type="text" />
+        <label htmlFor="input-name-patient">
+          Nome do paciente:
+          { ' ' }
+          <input
+            type="text"
+          />
+        </label>
+        <label htmlFor="input-name-treatment">
+          Nome do tratamento:
+          { ' ' }
+          <input
+            type="text"
+          />
+        </label>
+        <label htmlFor="payment-method">
+          Forma de pagamento:
+          { ' ' }
+          <select>
+            <option>----</option>
+            <option>Pix</option>
+            <option>Cartão</option>
+          </select>
+        </label>
+        <label htmlFor="input-parcel">
+          Parcelas:
+          { ' ' }
+          <select>
+            <option>----</option>
+            {
+              parcel.map((el) => (
+                <option
+                  key={el}
+                >
+                  {el + 1}
+                  x
+                </option>
+              ))
+            }
+          </select>
+        </label>
+        <label htmlFor="service-date">
+          Data do atendimento:
+          { ' ' }
+          <input type="text" />
+        </label>
         <button
           type="button"
         >
