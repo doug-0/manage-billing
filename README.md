@@ -1,1 +1,1 @@
-## Manage Billing
+# Manage Billing
