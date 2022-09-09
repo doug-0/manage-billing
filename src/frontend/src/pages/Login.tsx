@@ -1,7 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 // import axios from 'axios';
 import checkDataUser from '../utils/validateData';
+
+import {
+  ButtonLogin,
+  FormLogin,
+  InputLoginUser,
+  LoginContainer,
+  MiddleLine,
+  TextWelcome,
+} from '../styles/Login';
 
 export default function Login(): JSX.Element {
   // const navigate = useNavigate();
@@ -30,39 +38,50 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <div>
-      <div>
-        <h4>Bem vindo!</h4>
+    <LoginContainer>
+      <TextWelcome>
+        <h1
+          style={{
+            fontSize: '45px',
+          }}
+        >
+          Olá! Seja Bem-Vindo
+        </h1>
+        <h4
+          style={{
+            fontSize: '25px',
+            color: '#646464',
+          }}
+        >
+          Entre com sua conta.
+        </h4>
+      </TextWelcome>
+      <MiddleLine />
+      <FormLogin>
         <div>
-          <input
+          <InputLoginUser
             type="text"
             placeholder="Email..."
             onChange={({ target }) => setEmailUser(target.value)}
           />
         </div>
         <div>
-          <input
+          <InputLoginUser
             type="password"
             placeholder="Senha..."
             onChange={({ target }) => setPassUser(target.value)}
           />
         </div>
         <div>
-          <button
+          <ButtonLogin
             type="button"
             disabled={checkDataUser(emailUser, passUser)}
             onClick={() => loginUser(emailUser, passUser)}
           >
             Login
-          </button>
+          </ButtonLogin>
         </div>
-        <Link
-          to="/register"
-          onClick={() => localStorage.clear()}
-        >
-          Criar conta
-        </Link>
-      </div>
-    </div>
+      </FormLogin>
+    </LoginContainer>
   );
 }
