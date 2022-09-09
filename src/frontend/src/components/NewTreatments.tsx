@@ -47,7 +47,7 @@ export default function NewTreatments(): JSX.Element {
         <label htmlFor="service-date">
           Data do atendimento:
           { ' ' }
-          <input type="text" />
+          <input type="date" min="1990-01-01" max="2100-12-31" />
         </label>
         <button
           type="button"
