@@ -1,30 +1,9 @@
-import express, { Router } from 'express';
-import connectToDataBase from './database/connection';
+import express from 'express';
+import Router from './routes/Router';
 
-class App {
-  public app: express.Application;
+const app = express();
 
-  constructor() {
-    this.app = express();
-    this.app.use(express.json());
-    this.app.get('/', (req, res) => res.send('olaa'));
-  }
+app.use(express.json());
+app.use('/user', Router.userRouter);
 
-  public startServer(PORT: string | number = 3001): void {
-    connectToDataBase();
-    this.app.listen(
-      PORT,
-      () => console.log(`Server running on port: ${PORT}`),
-    );
-  }
-
-  public addRouter(router: Router) {
-    this.app.use(router);
-  }
-
-  public getApp() {
-    return this.app;
-  }
-}
-
-export default App;
+export default app;
