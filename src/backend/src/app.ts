@@ -6,7 +6,7 @@ class App {
   constructor() {
     this.app = express();
     this.app.use(express.json());
-    this.app.use('/', (request: Request, response: Response) => response.send('🏳️‍🌈?'));
+    this.app.use('/', (request: Request, response: Response) => response.send('oi'));
   }
 
   public startServer(PORT: string | number = 3001): void {
