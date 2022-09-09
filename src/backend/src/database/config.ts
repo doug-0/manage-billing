@@ -4,7 +4,8 @@ dotenv.config();
 
 const MONGO_USERNAME = process.env.MONGO_USERNAME || '';
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD || '';
-const MONGO_URL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@softeo-db-ps.krrwpcg.mongodb.net/?retryWrites=true&w=majority`;
+const MONGO_DB_LINK = process.env.DB_LINK || '';
+const MONGO_URL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_DB_LINK}`;
 
 const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 1337;
 
