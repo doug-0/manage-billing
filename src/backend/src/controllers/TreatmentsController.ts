@@ -31,6 +31,20 @@ class TreatmentsController {
       return res.status(500).json(error);
     }
   };
+
+  static deleteTreatment = async (req: Request, res: Response): Promise<typeof res> => {
+    const { id } = req.params;
+
+    try {
+      const deletedTreatment = await TreatmentService.deleteTreatment(id);
+
+      if (!deletedTreatment) return res.status(404).json(ControllerErrors.badRequest);
+
+      return res.status(204).end();
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  };
 }
 
 export default TreatmentsController;

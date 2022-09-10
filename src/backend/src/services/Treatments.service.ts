@@ -16,6 +16,18 @@ class TreatmentService {
       return console.log(error);
     }
   };
+
+  static deleteTreatment = async (id: string): Promise<boolean | null | void> => {
+    try {
+      const result = await TreatmentModel.deleteOne({ _id: id });
+
+      if (!result) return null;
+
+      return true;
+    } catch (error) {
+      return console.log(error);
+    }
+  };
 }
 
 export default TreatmentService;
