@@ -45,6 +45,18 @@ class TreatmentsController {
       return res.status(500).json(error);
     }
   };
+
+  static getAllTreatment = async (_req: Request, res: Response): Promise<typeof res> => {
+    try {
+      const allMyTreatments = await TreatmentService.getAll();
+
+      if (!allMyTreatments) return res.status(404).json(ControllerErrors.badRequest);
+
+      return res.status(200).json(allMyTreatments);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  };
 }
 
 export default TreatmentsController;

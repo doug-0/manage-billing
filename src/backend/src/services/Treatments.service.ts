@@ -28,6 +28,18 @@ class TreatmentService {
       return console.log(error);
     }
   };
+
+  static getAll = async (): Promise<TreatmentsData[] | null | void> => {
+    try {
+      const allTreatments = await TreatmentModel.find();
+
+      if (!allTreatments) return null;
+
+      return allTreatments as TreatmentsData[];
+    } catch (error) {
+      return console.log(error);
+    }
+  };
 }
 
 export default TreatmentService;
