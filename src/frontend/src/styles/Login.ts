@@ -65,3 +65,12 @@ export const ButtonLogin = styled.button`
     cursor: not-allowed;
   }
 `;
+
+export const ErrorInput = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: red;
+  margin-bottom: 20px;
+  padding: 10px;
+`;
