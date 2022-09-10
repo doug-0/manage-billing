@@ -66,4 +66,27 @@ export const getAllTreatments = async (): Promise<ITreatments[]> => {
   }
 };
 
+export const deleteTreatment = async (id: string): Promise<void | any> => {
+  try {
+    await axios.delete(`${BASE_URL}/treatments/${id}`, { headers });
+
+    return Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Feito!',
+      text: 'Tratamento excluido com sucesso!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Alguma coisa deu errado!',
+    });
+
+    return console.error(error);
+  }
+};
+
 export default loginUser;

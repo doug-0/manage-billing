@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 
 import NewTreatments from '../components/NewTreatments';
-import { getAllTreatments } from '../utils/requestAPI';
+import { deleteTreatment, getAllTreatments } from '../utils/requestAPI';
 
 import { ITreatments } from '../interface/Treatments';
 import Context from '../context/Context';
@@ -12,29 +12,26 @@ import {
 export default function Treatments(): JSX.Element {
   const { showFormTreatment } = useContext(Context);
   const [dataTreatments, setDataTreatments] = useState<ITreatments[]>([]);
+  const [refresh, setRefresh] = useState(false);
   const myBilling: number[] = [0];
 
   const getTreatments = async () => {
     const data = await getAllTreatments();
+
     setDataTreatments(data);
   };
 
   useEffect(() => {
+    console.log('dentro do useEffect');
     getTreatments();
-  }, []);
-
-  if (dataTreatments.length === 0) {
-    return (
-      <h1>Carregando</h1>
-    );
-  }
+  }, [refresh]);
 
   return (
     <>
       <ContainerTable>
         {
         showFormTreatment && <NewTreatments />
-      }
+        }
         <TableTreatment>
           <tbody>
             <tr>
@@ -84,6 +81,10 @@ export default function Treatments(): JSX.Element {
                   <td>
                     <ButtonAction
                       type="button"
+                      onClick={() => {
+                        deleteTreatment(el._id);
+                        setRefresh(!refresh);
+                      }}
                     >
                       <img src="https://img.icons8.com/glyph-neue/25/FA5252/delete.png" alt="delete-icon" />
                     </ButtonAction>
@@ -99,6 +100,13 @@ export default function Treatments(): JSX.Element {
           })
         }
         </TableTreatment>
+        {
+          dataTreatments.length === 0 && (
+            <div>
+              Ainda não existe tratamentos registrados
+            </div>
+          )
+        }
       </ContainerTable>
       <TotalValue>
         Valor Total: R$
