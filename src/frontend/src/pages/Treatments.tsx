@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 
 import NewTreatments from '../components/NewTreatments';
+import { getAllTreatments } from '../utils/requestAPI';
 
-import mockTreatments from '../mocks/data';
 import { ITreatments } from '../interface/Treatments';
 import Context from '../context/Context';
 import { ContainerTable, TableTreatment, TotalValue } from '../styles/Treatments';
@@ -12,9 +12,20 @@ export default function Treatments(): JSX.Element {
   const [dataTreatments, setDataTreatments] = useState<ITreatments[]>([]);
   const myBilling: number[] = [0];
 
+  const getTreatments = async () => {
+    const data = await getAllTreatments();
+    setDataTreatments(data);
+  };
+
   useEffect(() => {
-    setDataTreatments(mockTreatments);
+    getTreatments();
   }, []);
+
+  if (dataTreatments.length === 0) {
+    return (
+      <h1>Carregando</h1>
+    );
+  }
 
   return (
     <>
@@ -37,30 +48,30 @@ export default function Treatments(): JSX.Element {
           {
           dataTreatments.map((el) => {
             const {
-              id,
-              nomeDoTratamento,
-              nomePaciente,
-              formaDePagamento,
-              qntParcelas,
-              dataAtendimento,
-              valor,
+              _id,
+              treatmentName,
+              pacientName,
+              paymentMethod,
+              numberParcel,
+              serviceDate,
+              serviceValue,
             } = el;
-            myBilling.push(valor);
+            myBilling.push(serviceValue);
             return (
-              <tbody key={id}>
+              <tbody key={_id}>
                 <tr>
-                  <td>{ nomePaciente }</td>
-                  <td>{ nomeDoTratamento }</td>
-                  <td>{ formaDePagamento }</td>
-                  <td>{ qntParcelas }</td>
+                  <td>{ pacientName }</td>
+                  <td>{ treatmentName }</td>
+                  <td>{ paymentMethod }</td>
+                  <td>{ numberParcel }</td>
                   <td>
-                    { dataAtendimento }
+                    { serviceDate }
                     { ' ' }
                     até
                     { ' ' }
-                    { dataAtendimento }
+                    { serviceDate }
                   </td>
-                  <td>{ valor }</td>
+                  <td>{ serviceValue }</td>
                   <td>Excluir</td>
                 </tr>
               </tbody>

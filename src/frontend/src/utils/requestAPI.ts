@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { NewTreatment } from '../interface/Treatments';
+import { ITreatments, NewTreatment } from '../interface/Treatments';
 
 const BASE_URL = import.meta.env.VITE_REACT_API_LINK;
 const headers = {
@@ -50,6 +50,19 @@ export const createTreatment = async (
     });
 
     return console.error(error);
+  }
+};
+
+export const getAllTreatments = async (): Promise<ITreatments[]> => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}/treatments`, { headers });
+
+    if (!data) return [];
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 };
 

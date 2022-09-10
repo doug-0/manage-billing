@@ -1,11 +1,12 @@
 export interface ITreatments {
-  id: number;
-  nomePaciente: string;
-  nomeDoTratamento: string;
-  formaDePagamento: string;
-  qntParcelas: number;
-  dataAtendimento: string,
-  valor: number;
+  _id: string;
+  pacientName: string;
+  treatmentName: string;
+  paymentMethod: string;
+  numberParcel: number;
+  serviceDate: string,
+  serviceValue: number;
+  __v: number;
 }
 
 export interface NewTreatment {
