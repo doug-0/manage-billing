@@ -1,29 +1,32 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import Context from '../context/Context';
+import { ButtonsHeader, HeaderContainer } from '../styles/Header';
 
 export default function Header(): JSX.Element {
+  const { showFormTreatment, setShowFormTreatment } = useContext(Context);
+
   return (
-    <header>
-      <nav>
-        <div>
-          <Link
-            to="/register"
-          >
-            Registrar Novo Tratamento
-          </Link>
-          <Link
-            to="/treatments"
-          >
-            Todos os Tratamentos
-          </Link>
-        </div>
-        <div>
-          <Link
-            to="/"
-          >
-            Logout
-          </Link>
-        </div>
-      </nav>
-    </header>
+    <HeaderContainer>
+      <div>
+        <img src="https://img.icons8.com/dusk/64/000000/dental-crown.png" alt="tooth-icon" />
+      </div>
+      <div>
+        <ButtonsHeader
+          type="button"
+          onClick={() => setShowFormTreatment(!showFormTreatment)}
+        >
+          {
+            showFormTreatment ? 'Fechar Formulário' : 'Registrar Novo Tratamento'
+          }
+        </ButtonsHeader>
+      </div>
+      <div>
+        <ButtonsHeader
+          href="/"
+        >
+          Logout
+        </ButtonsHeader>
+      </div>
+    </HeaderContainer>
   );
 }

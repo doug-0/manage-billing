@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import NewTreatments from '../components/NewTreatments';
 
 import mockTreatments from '../mocks/data';
 import { ITreatments } from '../interface/Treatments';
+import Context from '../context/Context';
 
 export default function Treatments(): JSX.Element {
+  const { showFormTreatment } = useContext(Context);
   const [dataTreatments, setDataTreatments] = useState<ITreatments[]>([]);
   const myBilling: number[] = [0];
 
@@ -15,7 +17,9 @@ export default function Treatments(): JSX.Element {
 
   return (
     <div>
-      <NewTreatments />
+      {
+        showFormTreatment && <NewTreatments />
+      }
       <table>
         <tbody>
           <tr>
