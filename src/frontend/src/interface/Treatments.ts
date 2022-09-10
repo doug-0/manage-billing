@@ -7,3 +7,12 @@ export interface ITreatments {
   dataAtendimento: string,
   valor: number;
 }
+
+export interface NewTreatment {
+  pacientName: string;
+  treatmentName: string;
+  paymentMethod: string;
+  numberParcel: number;
+  serviceDate: string;
+  serviceValue: number;
+}
