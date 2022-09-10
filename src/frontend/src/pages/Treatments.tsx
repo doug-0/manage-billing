@@ -5,7 +5,9 @@ import { getAllTreatments } from '../utils/requestAPI';
 
 import { ITreatments } from '../interface/Treatments';
 import Context from '../context/Context';
-import { ContainerTable, TableTreatment, TotalValue } from '../styles/Treatments';
+import {
+  ButtonAction, ContainerTable, TableTreatment, TotalValue,
+} from '../styles/Treatments';
 
 export default function Treatments(): JSX.Element {
   const { showFormTreatment } = useContext(Context);
@@ -63,7 +65,10 @@ export default function Treatments(): JSX.Element {
                   <td>{ pacientName }</td>
                   <td>{ treatmentName }</td>
                   <td>{ paymentMethod }</td>
-                  <td>{ numberParcel }</td>
+                  <td>
+                    { numberParcel }
+                    x
+                  </td>
                   <td>
                     { serviceDate }
                     { ' ' }
@@ -71,8 +76,23 @@ export default function Treatments(): JSX.Element {
                     { ' ' }
                     { serviceDate }
                   </td>
-                  <td>{ serviceValue }</td>
-                  <td>Excluir</td>
+                  <td>
+                    R$
+                    {' '}
+                    { serviceValue }
+                  </td>
+                  <td>
+                    <ButtonAction
+                      type="button"
+                    >
+                      <img src="https://img.icons8.com/glyph-neue/25/FA5252/delete.png" alt="delete-icon" />
+                    </ButtonAction>
+                    <ButtonAction
+                      type="button"
+                    >
+                      <img src="https://img.icons8.com/glyph-neue/25/40C057/pencil.png" alt="edit-icon" />
+                    </ButtonAction>
+                  </td>
                 </tr>
               </tbody>
             );

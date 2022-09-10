@@ -9,7 +9,7 @@ export const TableTreatment = styled.table`
     border: 0.5px solid #ddd;
     height: 70px;
     padding: 15px;
-    text-align: left;
+    text-align: center;
     background-color: #7c82fd;
     color: white;
   }
@@ -42,6 +42,7 @@ export const ContainerTable = styled.div`
 `;
 
 export const TotalValue = styled.h3`
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -53,4 +54,19 @@ export const TotalValue = styled.h3`
   width: 180px;
   padding: 5px;
   border-radius: 5px;
+`;
+
+export const ButtonAction = styled.button`
+  background-color: transparent;
+  padding: 5px;
+  margin-left: 8px;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  transition: 0.3s;
+  
+  &:hover {
+    transition: 0.3s;
+    background-color: white;
+  }
 `;
