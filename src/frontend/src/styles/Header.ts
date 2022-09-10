@@ -6,7 +6,8 @@ export const HeaderContainer = styled.header`
   padding: 35px;
   padding-bottom: 20px;
   justify-content: space-between;
-  border-bottom: 1px solid #beffff;
+  /* border-bottom: 1px solid #beffff; */
+  box-shadow: 1px 1px 150px lightgray;
 `;
 
 export const ButtonsHeader = styled.a`

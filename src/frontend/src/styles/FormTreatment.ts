@@ -10,16 +10,11 @@ export const FormContainer = styled.div`
 `;
 
 export const FormTreatment = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: #d9fcfc;
   border: 2px dotted #5ba19e;
   border-radius: 15px;
   padding: 35px;
-  padding-bottom: 0px;
-  width: 75%;
+  padding-bottom: 15px;
 `;
 
 export const InputFormTreatment = styled.input`
@@ -48,6 +43,8 @@ export const Calendar = styled.input`
   border: none;
   background-color: transparent;
   border-bottom: 1px solid darkgrey;
+  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 export const Button = styled.button`
