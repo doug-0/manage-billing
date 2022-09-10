@@ -12,7 +12,8 @@ class UserController {
 
       if (!isLogged) return res.status(404).json(ControllerErrors.badRequest);
 
-      return res.status(200).json(isLogged);
+      // eslint-disable-next-line no-underscore-dangle
+      return res.status(200).json({ email: isLogged.email, id: isLogged._id });
     } catch (error) {
       return res.status(500).json(error);
     }
