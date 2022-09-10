@@ -1,9 +1,11 @@
 import { useState } from 'react';
-// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import checkDataUser from '../utils/validateData';
+import loginUser from '../utils/requestAPI';
 
 import {
   ButtonLogin,
+  ErrorInput,
   FormLogin,
   InputLoginUser,
   LoginContainer,
@@ -12,29 +14,17 @@ import {
 } from '../styles/Login';
 
 export default function Login(): JSX.Element {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [emailUser, setEmailUser] = useState('');
   const [passUser, setPassUser] = useState('');
-  // const BASE_URL = process.env.REACT_APP_API_LINK;
+  const [showError, setShowError] = useState(false);
 
-  const loginUser = async (email: string, password: string): Promise<void> => {
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    };
-    console.log(email, password, headers);
+  const login = async (): Promise<void> => {
+    const isLogged = await loginUser(emailUser, passUser);
 
-    // try {
-    //   // const { data: { id, token } } = await axios
-    //   // .post(`${BASE_URL}/user/login`, { email, password }, { headers });
+    if (!isLogged) return setShowError(true);
 
-    //   localStorage.setItem('token', JSON.stringify(token));
-    //   localStorage.setItem('id', JSON.stringify(id));
-
-    //   return navigate(`/contacts/${id}`);
-    // } catch (error) {
-    //   return console.error(error);
-    // }
+    return navigate('/treatments');
   };
 
   return (
@@ -71,12 +61,20 @@ export default function Login(): JSX.Element {
             placeholder="Senha..."
             onChange={({ target }) => setPassUser(target.value)}
           />
+          {
+            showError && (
+            <ErrorInput>
+              <img src="https://img.icons8.com/material-outlined/20/FA5252/error--v1.png" alt="erro-icon" />
+              E-mail ou senha inválidos
+            </ErrorInput>
+            )
+          }
         </div>
         <div>
           <ButtonLogin
             type="button"
             disabled={checkDataUser(emailUser, passUser)}
-            onClick={() => loginUser(emailUser, passUser)}
+            onClick={() => login()}
           >
             Login
           </ButtonLogin>
