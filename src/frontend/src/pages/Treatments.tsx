@@ -5,6 +5,7 @@ import NewTreatments from '../components/NewTreatments';
 import mockTreatments from '../mocks/data';
 import { ITreatments } from '../interface/Treatments';
 import Context from '../context/Context';
+import { ContainerTable, TableTreatment, TotalValue } from '../styles/Treatments';
 
 export default function Treatments(): JSX.Element {
   const { showFormTreatment } = useContext(Context);
@@ -16,23 +17,24 @@ export default function Treatments(): JSX.Element {
   }, []);
 
   return (
-    <div>
-      {
+    <>
+      <ContainerTable>
+        {
         showFormTreatment && <NewTreatments />
       }
-      <table>
-        <tbody>
-          <tr>
-            <th>Nome de Paciente</th>
-            <th>Nome do Tratamento</th>
-            <th>Forma de Pagamento</th>
-            <th>Quantidade de parcelas</th>
-            <th>Período de Pagamento</th>
-            <th>Valor Total</th>
-            <th>Ações</th>
-          </tr>
-        </tbody>
-        {
+        <TableTreatment>
+          <tbody>
+            <tr>
+              <th>Nome de Paciente</th>
+              <th>Nome do Tratamento</th>
+              <th>Forma de Pagamento</th>
+              <th>Quantidade de parcelas</th>
+              <th>Período de Pagamento</th>
+              <th>Valor Total</th>
+              <th>Ações</th>
+            </tr>
+          </tbody>
+          {
           dataTreatments.map((el) => {
             const {
               id,
@@ -65,12 +67,13 @@ export default function Treatments(): JSX.Element {
             );
           })
         }
-      </table>
-      <h3>
+        </TableTreatment>
+      </ContainerTable>
+      <TotalValue>
         Valor Total: R$
         { ' ' }
         { myBilling.reduce((prev, curr) => prev + curr) }
-      </h3>
-    </div>
+      </TotalValue>
+    </>
   );
 }
