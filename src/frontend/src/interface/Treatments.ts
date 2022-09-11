@@ -17,3 +17,11 @@ export interface NewTreatment {
   serviceDate: string;
   serviceValue: number;
 }
+
+export interface checkTreatmentData {
+  pacientName: string;
+  treatmentName: string;
+  paymentMethod: string;
+  serviceValue: number;
+  serviceDate: string;
+}

@@ -1,11 +1,21 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { ITreatments, NewTreatment } from '../interface/Treatments';
+import { checkTreatmentData, ITreatments, NewTreatment } from '../interface/Treatments';
 
 const BASE_URL = import.meta.env.VITE_REACT_API_LINK;
 const headers = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
+};
+
+const checkData = ({
+  pacientName, treatmentName, paymentMethod, serviceValue, serviceDate,
+}: checkTreatmentData): boolean => {
+  if (!pacientName || !treatmentName || !paymentMethod || !serviceValue || !serviceDate) {
+    return true;
+  }
+
+  return false;
 };
 
 const loginUser = async (email: string, password: string): Promise<boolean | void | any> => {
@@ -27,6 +37,18 @@ const loginUser = async (email: string, password: string): Promise<boolean | voi
 export const createTreatment = async (
   newTreatment: NewTreatment,
 ): Promise<void | null | NewTreatment> => {
+  if (checkData(newTreatment)) {
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Ops!',
+      text: 'Verifique todos os campos preenchidos',
+      showConfirmButton: true,
+    });
+
+    return console.error('Error!');
+  }
+
   try {
     const { data } = await axios.post(`${BASE_URL}/treatments`, newTreatment, { headers });
 
