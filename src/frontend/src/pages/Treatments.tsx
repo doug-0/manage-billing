@@ -1,17 +1,20 @@
 import { useState, useEffect, useContext } from 'react';
 
 import NewTreatments from '../components/NewTreatments';
-import { deleteTreatment, getAllTreatments } from '../utils/requestAPI';
+import { getAllTreatments } from '../utils/requestAPI';
 
 import { ITreatments } from '../interface/Treatments';
 import Context from '../context/Context';
 import {
-  ButtonAction, ContainerTable, TableTreatment, TotalValue,
+  ContainerTable, TableTreatment, TotalValue,
 } from '../styles/Treatments';
+import EditableLine from '../components/EditableLine';
+import ReadingLine from '../components/ReadingLine';
 
 export default function Treatments(): JSX.Element {
-  const { showFormTreatment, refresh, setRefresh } = useContext(Context);
+  const { showFormTreatment, refresh } = useContext(Context);
   const [dataTreatments, setDataTreatments] = useState<ITreatments[]>([]);
+  const [editTreatmentId, setEditTreatmentTd] = useState<any>(null);
   const myBilling: number[] = [0];
 
   const getTreatments = async () => {
@@ -25,6 +28,12 @@ export default function Treatments(): JSX.Element {
   useEffect(() => {
     getTreatments();
   }, [refresh]);
+
+  const showEditLine = (id: any) => {
+    if (!id) return setEditTreatmentTd('');
+
+    return setEditTreatmentTd(id);
+  };
 
   return (
     <>
@@ -44,61 +53,29 @@ export default function Treatments(): JSX.Element {
               <th>Ações</th>
             </tr>
           </tbody>
-          {
-          dataTreatments.map((el) => {
-            const {
-              _id,
-              treatmentName,
-              pacientName,
-              paymentMethod,
-              numberParcel,
-              serviceDate,
-              serviceValue,
-            } = el;
-            myBilling.push(serviceValue);
-            return (
-              <tbody key={_id}>
-                <tr>
-                  <td>{ pacientName }</td>
-                  <td>{ treatmentName }</td>
-                  <td>{ paymentMethod }</td>
-                  <td>
-                    { numberParcel }
-                    x
-                  </td>
-                  <td>
-                    { serviceDate }
-                    { ' ' }
-                    até
-                    { ' ' }
-                    { serviceDate }
-                  </td>
-                  <td>
-                    R$
-                    {' '}
-                    { serviceValue }
-                  </td>
-                  <td>
-                    <ButtonAction
-                      type="button"
-                      onClick={() => {
-                        deleteTreatment(el._id);
-                        setRefresh(!refresh);
-                      }}
-                    >
-                      <img src="https://img.icons8.com/glyph-neue/25/FA5252/delete.png" alt="delete-icon" />
-                    </ButtonAction>
-                    <ButtonAction
-                      type="button"
-                    >
-                      <img src="https://img.icons8.com/glyph-neue/25/40C057/pencil.png" alt="edit-icon" />
-                    </ButtonAction>
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })
-        }
+          <tbody>
+            {
+              dataTreatments.map((el) => {
+                const props = { showEditLine, el };
+                const {
+                  serviceValue,
+                } = el;
+                myBilling.push(serviceValue);
+
+                return (
+                  <tr key={el._id}>
+                    {
+                      editTreatmentId === el._id ? (
+                        <EditableLine {...props} />
+                      ) : (
+                        <ReadingLine {...props} />
+                      )
+                    }
+                  </tr>
+                );
+              })
+            }
+          </tbody>
         </TableTreatment>
       </ContainerTable>
       <TotalValue>

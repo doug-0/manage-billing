@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export interface ITreatments {
   _id: string;
   pacientName: string;
@@ -7,6 +8,11 @@ export interface ITreatments {
   serviceDate: string,
   serviceValue: number;
   __v: number;
+}
+
+export interface ITreatment {
+  el: ITreatments,
+  showEditLine: (id: any) => void;
 }
 
 export interface NewTreatment {
