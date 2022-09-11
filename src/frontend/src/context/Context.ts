@@ -4,6 +4,8 @@ import ContextData from '../interface/ContextData';
 const initialState = {
   showFormTreatment: false,
   setShowFormTreatment: () => {},
+  refresh: false,
+  setRefresh: () => {},
 };
 
 const Context = createContext<ContextData>(initialState);

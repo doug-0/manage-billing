@@ -5,10 +5,13 @@ import { Props } from '../interface/PropsChildren';
 
 export default function Provider({ children }: Props) {
   const [showFormTreatment, setShowFormTreatment] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const myContext = {
     showFormTreatment,
     setShowFormTreatment,
+    refresh,
+    setRefresh,
   };
 
   return (

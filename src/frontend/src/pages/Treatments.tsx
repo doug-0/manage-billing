@@ -10,19 +10,19 @@ import {
 } from '../styles/Treatments';
 
 export default function Treatments(): JSX.Element {
-  const { showFormTreatment } = useContext(Context);
+  const { showFormTreatment, refresh, setRefresh } = useContext(Context);
   const [dataTreatments, setDataTreatments] = useState<ITreatments[]>([]);
-  const [refresh, setRefresh] = useState(false);
   const myBilling: number[] = [0];
 
   const getTreatments = async () => {
-    const data = await getAllTreatments();
+    setTimeout(async () => {
+      const data = await getAllTreatments();
 
-    setDataTreatments(data);
+      setDataTreatments(data);
+    }, 100);
   };
 
   useEffect(() => {
-    console.log('dentro do useEffect');
     getTreatments();
   }, [refresh]);
 
@@ -100,13 +100,6 @@ export default function Treatments(): JSX.Element {
           })
         }
         </TableTreatment>
-        {
-          dataTreatments.length === 0 && (
-            <div>
-              Ainda não existe tratamentos registrados
-            </div>
-          )
-        }
       </ContainerTable>
       <TotalValue>
         Valor Total: R$

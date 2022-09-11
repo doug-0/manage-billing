@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createTreatment } from '../utils/requestAPI';
 
 import {
@@ -8,8 +8,10 @@ import {
   FormContainer, FormTreatment, InputFormTreatment, LabelInputText, SelectDropDown,
 } from '../styles/FormTreatment';
 import { NewTreatment } from '../interface/Treatments';
+import Context from '../context/Context';
 
 export default function NewTreatments(): JSX.Element {
+  const { refresh, setRefresh } = useContext(Context);
   const [disabledOption, setdisabledOption] = useState(false);
   const [newTreatment, setNewTreatment] = useState<NewTreatment>({
     pacientName: '',
@@ -133,7 +135,10 @@ export default function NewTreatments(): JSX.Element {
           </label>
           <Button
             type="button"
-            onClick={() => createTreatment(newTreatment)}
+            onClick={() => {
+              createTreatment(newTreatment);
+              setRefresh(!refresh);
+            }}
           >
             Adicionar
           </Button>

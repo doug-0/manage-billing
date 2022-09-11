@@ -3,4 +3,6 @@
 export default interface ContextData {
   showFormTreatment: boolean,
   setShowFormTreatment: (newState: boolean) => void,
+  refresh: boolean,
+  setRefresh: (newState: boolean) => void,
 }
