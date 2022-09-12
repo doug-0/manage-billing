@@ -139,18 +139,7 @@ export default function EditableLine({
         { ' ' }
         até
         { ' ' }
-        <input
-          type="text"
-          defaultValue={el.serviceDate}
-          onChange={
-            ({ target }) => {
-              setMyTreatmentUpdated({
-                ...myTreatmentUpdated,
-                serviceDate: target.value,
-              });
-            }
-          }
-        />
+        { el.finalDate }
       </td>
       <td>
         R$

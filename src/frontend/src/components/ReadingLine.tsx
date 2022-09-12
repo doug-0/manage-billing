@@ -20,16 +20,21 @@ export default function ReadingLine({
         x
       </td>
       <td>
+        R$
+        {' '}
+        { el.parcelValue.toFixed(2).replace('.', ',') }
+      </td>
+      <td>
         { el.serviceDate }
         { ' ' }
         até
         { ' ' }
-        { el.serviceDate }
+        { el.finalDate }
       </td>
       <td>
         R$
         {' '}
-        { el.serviceValue }
+        { el.serviceValue.toFixed(2).replace('.', ',') }
       </td>
       <td>
         <ButtonAction

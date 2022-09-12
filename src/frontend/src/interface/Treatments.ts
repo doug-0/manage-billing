@@ -7,6 +7,8 @@ export interface ITreatments {
   numberParcel: number;
   serviceDate: string,
   serviceValue: number;
+  finalDate: string,
+  parcelValue: number,
   __v: number;
 }
 
