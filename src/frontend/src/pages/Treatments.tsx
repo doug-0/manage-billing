@@ -10,11 +10,15 @@ import {
 } from '../styles/Treatments';
 import EditableLine from '../components/EditableLine';
 import ReadingLine from '../components/ReadingLine';
+import FilterByPeriod from '../components/FilterByPeriod';
 
 export default function Treatments(): JSX.Element {
   const { showFormTreatment, refresh } = useContext(Context);
   const [dataTreatments, setDataTreatments] = useState<ITreatments[]>([]);
   const [editTreatmentId, setEditTreatmentTd] = useState<any>(null);
+  const [firstDateFilter, setFirstDateFilter] = useState('');
+  const [lastDateFilter, setLastDateFilter] = useState('');
+  const [isFilter, setIsFilter] = useState(true);
   const myBilling: number[] = [0];
 
   const getTreatments = async () => {
@@ -35,12 +39,42 @@ export default function Treatments(): JSX.Element {
     return setEditTreatmentTd(id);
   };
 
+  const convertDate = (date: any) => {
+    const dataSplit = date.split('/').reverse().join('-');
+
+    const newDate = new Date(dataSplit);
+
+    return newDate;
+  };
+
+  const filterPeriod = () => {
+    const initialDateFilter = new Date(firstDateFilter);
+    const finalDateFilter = new Date(lastDateFilter);
+
+    const filterDataTreatments = dataTreatments
+      .filter((el) => convertDate(
+        el.serviceDate,
+      ) >= initialDateFilter && convertDate(el.serviceDate) <= finalDateFilter);
+
+    setDataTreatments(filterDataTreatments);
+  };
+
+  const Props = {
+    filterPeriod,
+    setFirstDateFilter,
+    setLastDateFilter,
+    setIsFilter,
+    isFilter,
+  };
+
   return (
     <>
+
       <ContainerTable>
         {
         showFormTreatment && <NewTreatments />
         }
+        <FilterByPeriod {...Props} />
         <TableTreatment>
           <tbody>
             <tr>
@@ -61,9 +95,8 @@ export default function Treatments(): JSX.Element {
                 const {
                   parcelValue,
                 } = el;
-                console.log(el);
                 myBilling.push(parcelValue);
-                console.log(parcelValue);
+
                 return (
                   <tr key={el._id}>
                     {
