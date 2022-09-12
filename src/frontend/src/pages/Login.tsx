@@ -30,11 +30,7 @@ export default function Login(): JSX.Element {
   return (
     <LoginContainer>
       <TextWelcome>
-        <h1
-          style={{
-            fontSize: '45px',
-          }}
-        >
+        <h1>
           Olá! Seja Bem-Vindo
         </h1>
         <h4

@@ -48,6 +48,7 @@ export default function Treatments(): JSX.Element {
               <th>Nome do Tratamento</th>
               <th>Forma de Pagamento</th>
               <th>Quantidade de parcelas</th>
+              <th>Valor da parcela</th>
               <th>Período de Pagamento</th>
               <th>Valor Total</th>
               <th>Ações</th>
@@ -58,10 +59,11 @@ export default function Treatments(): JSX.Element {
               dataTreatments.map((el) => {
                 const props = { showEditLine, el };
                 const {
-                  serviceValue,
+                  parcelValue,
                 } = el;
-                myBilling.push(serviceValue);
-
+                console.log(el);
+                myBilling.push(parcelValue);
+                console.log(parcelValue);
                 return (
                   <tr key={el._id}>
                     {

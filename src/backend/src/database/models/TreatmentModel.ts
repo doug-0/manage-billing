@@ -25,6 +25,14 @@ const TreatmentSchema = new mongoose.Schema({
     type: Number,
     require: true,
   },
+  finalDate: {
+    type: String,
+    require: true,
+  },
+  parcelValue: {
+    type: Number,
+    require: true,
+  },
 });
 
 export default mongoose.model('treatments', TreatmentSchema);
