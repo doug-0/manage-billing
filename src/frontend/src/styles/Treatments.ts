@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TableTreatment = styled.table`
   width: 85%;
   border-collapse: collapse;
-  margin-top: 35px;
+  margin-top: 20px;
   box-shadow: 5px 15px 15px lightgray;
   th {
     border: 0.5px solid #ddd;

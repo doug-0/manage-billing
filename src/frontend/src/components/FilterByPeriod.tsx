@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react';
 import Context from '../context/Context';
+import { DivInputDate, FilterContainer, ButtonActionFilter } from '../styles/Filter';
+import { InputFormTreatment } from '../styles/FormTreatment';
 
 export default function FilterByPeriod({
   filterPeriod,
@@ -12,31 +14,33 @@ export default function FilterByPeriod({
   const [initalDate, setInitialDate] = useState('2000-01-01');
 
   return (
-    <div>
-      Filtrar por período
-      <div>
+    <FilterContainer>
+      <span>
+        Filtrar por período
+      </span>
+      <DivInputDate>
         de:
         { '  ' }
-        <input
+        <InputFormTreatment
           type="date"
           onChange={({ target }) => {
             setFirstDateFilter(target.value);
           }}
           defaultValue={initalDate}
         />
-      </div>
-      <div>
+      </DivInputDate>
+      <DivInputDate>
         até:
         { '  ' }
-        <input
+        <InputFormTreatment
           type="date"
           onChange={({ target }) => {
             setLastDateFilter(target.value);
           }}
           defaultValue={initalDate}
         />
-      </div>
-      <button
+      </DivInputDate>
+      <ButtonActionFilter
         type="button"
         onClick={() => {
           filterPeriod();
@@ -44,8 +48,8 @@ export default function FilterByPeriod({
         }}
       >
         Filtrar
-      </button>
-      <button
+      </ButtonActionFilter>
+      <ButtonActionFilter
         disabled={isFilter}
         type="button"
         onClick={() => {
@@ -55,7 +59,7 @@ export default function FilterByPeriod({
         }}
       >
         Limpar Filtros
-      </button>
-    </div>
+      </ButtonActionFilter>
+    </FilterContainer>
   );
 }

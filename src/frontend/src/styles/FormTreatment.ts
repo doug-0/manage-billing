@@ -21,6 +21,10 @@ export const InputFormTreatment = styled.input`
   background-color: transparent;
   border: none;
   border-bottom: 1px solid darkgray;
+  
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const ContainerLabel = styled.div`
@@ -37,6 +41,10 @@ export const SelectDropDown = styled.select`
   background-color: transparent;
   border-bottom: 1px solid darkgray;
   margin-right: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Calendar = styled.input`
