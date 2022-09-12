@@ -22,7 +22,15 @@ const TreatmentSchema = new mongoose.Schema({
     require: true,
   },
   serviceValue: {
-    type: Number,
+    type: String,
+    require: true,
+  },
+  finalDate: {
+    type: String,
+    require: true,
+  },
+  parcelValue: {
+    type: String,
     require: true,
   },
 });

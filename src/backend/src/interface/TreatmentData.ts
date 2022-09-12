@@ -5,5 +5,6 @@ export default interface TreatmentsData {
   paymentMethod: string,
   numberParcel: number,
   serviceDate: string,
-  serviceValue: number,
+  serviceValue: string,
+  parcelValue?: string | number,
 };

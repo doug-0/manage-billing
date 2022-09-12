@@ -1,13 +1,32 @@
 import TreatmentModel from '../database/models/TreatmentModel';
 
 import TreatmentsData from '../interface/TreatmentData';
+import formateDate from '../helpers/formateDate';
+import valueParcel from '../helpers/valueParcel';
+
+const moment = require('moment');
 
 class TreatmentService {
   static createNewTreatment = async (
     treatmentInformation: TreatmentsData,
   ): Promise<TreatmentsData | void| null> => {
+    const {
+      numberParcel,
+      serviceDate,
+      serviceValue,
+    } = treatmentInformation;
+    const parcelValue = valueParcel(serviceValue, numberParcel);
+    const newDateFormated = moment(serviceDate).format('DD/MM/YYYY');
+    const finalDate = formateDate(serviceDate, numberParcel);
+
     try {
-      const newTreatment = await TreatmentModel.create(treatmentInformation);
+      const newTreatment = await TreatmentModel.create({
+        ...treatmentInformation,
+        serviceDate: newDateFormated,
+        finalDate,
+        parcelValue,
+        serviceValue: Number(serviceValue).toFixed(2).replace('.', ','),
+      });
 
       if (!newTreatment) return null;
 
