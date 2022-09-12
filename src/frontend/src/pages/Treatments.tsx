@@ -93,9 +93,9 @@ export default function Treatments(): JSX.Element {
               dataTreatments.map((el) => {
                 const props = { showEditLine, el };
                 const {
-                  parcelValue,
+                  serviceValue,
                 } = el;
-                myBilling.push(parcelValue);
+                myBilling.push(serviceValue);
 
                 return (
                   <tr key={el._id}>
