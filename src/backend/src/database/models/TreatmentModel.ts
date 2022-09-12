@@ -22,7 +22,7 @@ const TreatmentSchema = new mongoose.Schema({
     require: true,
   },
   serviceValue: {
-    type: String,
+    type: Number,
     require: true,
   },
   finalDate: {
@@ -30,7 +30,7 @@ const TreatmentSchema = new mongoose.Schema({
     require: true,
   },
   parcelValue: {
-    type: String,
+    type: Number,
     require: true,
   },
 });

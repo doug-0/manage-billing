@@ -9,7 +9,7 @@ const moment = require('moment');
 class TreatmentService {
   static createNewTreatment = async (
     treatmentInformation: TreatmentsData,
-  ): Promise<TreatmentsData | void| null> => {
+  ): Promise<TreatmentsData | void | null> => {
     const {
       numberParcel,
       serviceDate,
@@ -25,7 +25,6 @@ class TreatmentService {
         serviceDate: newDateFormated,
         finalDate,
         parcelValue,
-        serviceValue: Number(serviceValue).toFixed(2).replace('.', ','),
       });
 
       if (!newTreatment) return null;
