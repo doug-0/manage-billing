@@ -57,6 +57,35 @@ class TreatmentsController {
       return res.status(500).json(error);
     }
   };
+
+  static updateTreatment = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const {
+      numberParcel,
+      pacientName,
+      paymentMethod,
+      serviceDate,
+      serviceValue,
+      treatmentName,
+    } = req.body;
+
+    try {
+      const myTreatmentUpdated = await TreatmentService.updateTreatments({
+        numberParcel,
+        pacientName,
+        paymentMethod,
+        serviceDate,
+        serviceValue,
+        treatmentName,
+      }, id);
+
+      if (!myTreatmentUpdated) return res.status(404).json(ControllerErrors.badRequest);
+
+      return res.status(200).json(myTreatmentUpdated);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  };
 }
 
 export default TreatmentsController;

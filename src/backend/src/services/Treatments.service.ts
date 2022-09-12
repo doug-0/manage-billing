@@ -40,6 +40,24 @@ class TreatmentService {
       return console.log(error);
     }
   };
+
+  static updateTreatments = async (
+    updateData: TreatmentsData,
+    id: string,
+  ): Promise<void | null | TreatmentsData> => {
+    try {
+      const treatmentUpdated = await TreatmentModel.findOneAndUpdate(
+        { _id: id },
+        updateData,
+      );
+
+      if (!treatmentUpdated) return null;
+
+      return treatmentUpdated as TreatmentsData;
+    } catch (error) {
+      return console.log(error);
+    }
+  };
 }
 
 export default TreatmentService;
