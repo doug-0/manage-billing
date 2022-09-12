@@ -7,10 +7,20 @@ export const LoginContainer = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  @media (max-width: 930px) {
+    flex-direction: column;
+  }
 `;
 
 export const TextWelcome = styled.div`
   filter: drop-shadow(8px 8px 3px lightgray);
+  font-size: 20px;
+  @media (max-width: 930px) {
+    margin-bottom: 50px;
+  }
+  @media (max-width: 420px) {
+    font-size: 15px;
+  }
 `;
 
 export const MiddleLine = styled.div`
@@ -18,6 +28,12 @@ export const MiddleLine = styled.div`
   width: 1px;
   height: 600px;
   margin: 0px 150px 0px 150px;
+  @media (max-width: 1110px) {
+    margin: 0px 50px 0px 50px;
+  }
+  @media (max-width: 930px) {
+    display: none;
+  }
 `;
 
 export const FormLogin = styled.form`
@@ -30,6 +46,14 @@ export const FormLogin = styled.form`
   flex-direction: column;
   box-shadow: 5px 15px 15px lightgray;
   padding: 20px;
+  @media (max-width: 930px) {
+    width: 350px;
+    height: 350px;
+  }
+  @media (max-width: 360px) {
+    width: 280px;
+    height: 350px;
+  }
 `;
 
 export const InputLoginUser = styled.input`
