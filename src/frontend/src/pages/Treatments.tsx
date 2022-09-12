@@ -81,9 +81,12 @@ export default function Treatments(): JSX.Element {
         </TableTreatment>
       </ContainerTable>
       <TotalValue>
-        Valor Total: R$
+        Valor Total:
         { ' ' }
-        { myBilling.reduce((prev, curr) => prev + curr) }
+        { (myBilling.reduce((prev, curr) => prev + curr)).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }) }
       </TotalValue>
     </>
   );

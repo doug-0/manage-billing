@@ -20,9 +20,10 @@ export default function ReadingLine({
         x
       </td>
       <td>
-        R$
-        {' '}
-        { el.parcelValue.toFixed(2).replace('.', ',') }
+        { el.parcelValue.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }) }
       </td>
       <td>
         { el.serviceDate }
@@ -32,9 +33,10 @@ export default function ReadingLine({
         { el.finalDate }
       </td>
       <td>
-        R$
-        {' '}
-        { el.serviceValue.toFixed(2).replace('.', ',') }
+        { el.serviceValue.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }) }
       </td>
       <td>
         <ButtonAction
