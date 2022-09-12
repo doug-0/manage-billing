@@ -111,4 +111,41 @@ export const deleteTreatment = async (id: string): Promise<void | any> => {
   }
 };
 
+export const updateTreatment = async (
+  object: NewTreatment,
+  id: string,
+): Promise<void | NewTreatment | null> => {
+  try {
+    const { data } = await axios.put(`${BASE_URL}/treatments/${id}`, object, { headers });
+
+    if (!data) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Alguma coisa deu errado!',
+      });
+      return null;
+    }
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Feito!',
+      text: 'Tratamento atualizado com sucesso!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    return data;
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Alguma coisa deu errado!',
+    });
+
+    return console.error(error);
+  }
+};
+
 export default loginUser;

@@ -1,18 +1,19 @@
 /* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { ButtonAction } from '../styles/Treatments';
 import { ITreatment } from '../interface/Treatments';
 import { SelectDropDown } from '../styles/FormTreatment';
+import { updateTreatment } from '../utils/requestAPI';
+import Context from '../context/Context';
 
 export default function EditableLine({
   el,
   showEditLine,
-}: ITreatment) {
+}: ITreatment): JSX.Element {
   const parcel: number[] = Object.keys(new Array(12).fill(null)).map(Number);
   const [myTreatmentUpdated, setMyTreatmentUpdated] = useState({
-    _id: el._id,
     pacientName: el.pacientName,
     treatmentName: el.treatmentName,
     paymentMethod: el.paymentMethod,
@@ -21,6 +22,7 @@ export default function EditableLine({
     serviceValue: el.serviceValue,
   });
   const [isDisabled, setIsDisabled] = useState(false);
+  const { setRefresh, refresh } = useContext(Context);
 
   const checkPaymentMethod = (method: string): boolean | void => {
     if (method === 'Pix') {
@@ -39,6 +41,13 @@ export default function EditableLine({
     });
 
     return setIsDisabled(false);
+  };
+
+  const checkObjectUpdated = async () => {
+    await updateTreatment(myTreatmentUpdated, el._id);
+
+    showEditLine(null);
+    setRefresh(!refresh);
   };
 
   return (
@@ -162,7 +171,7 @@ export default function EditableLine({
       <td>
         <ButtonAction
           type="button"
-          onClick={() => { console.log('oi', myTreatmentUpdated); }}
+          onClick={() => { checkObjectUpdated(); }}
         >
           Salvar
         </ButtonAction>
