@@ -64,8 +64,7 @@ class TreatmentService {
     id: string,
   ): Promise<void | null | TreatmentsData> => {
     const { numberParcel, serviceDate } = updateData;
-    console.log(numberParcel);
-    console.log(serviceDate);
+
     if (numberParcel === 0) {
       try {
         const treatmentUpdated = await TreatmentModel.findOneAndUpdate(

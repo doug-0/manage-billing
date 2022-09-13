@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 
 import { ButtonAction } from '../styles/Treatments';
 import { ITreatment } from '../interface/Treatments';
-import { SelectDropDown } from '../styles/FormTreatment';
+import { InputFormTreatment, SelectDropDown } from '../styles/FormTreatment';
 import { updateTreatment } from '../utils/requestAPI';
 import Context from '../context/Context';
 
@@ -53,7 +53,7 @@ export default function EditableLine({
   return (
     <>
       <td>
-        <input
+        <InputFormTreatment
           type="text"
           defaultValue={el.pacientName}
           onChange={
@@ -67,7 +67,7 @@ export default function EditableLine({
         />
       </td>
       <td>
-        <input
+        <InputFormTreatment
           type="text"
           defaultValue={el.treatmentName}
           onChange={
@@ -130,7 +130,7 @@ export default function EditableLine({
         }) }
       </td>
       <td>
-        <input
+        <InputFormTreatment
           type="text"
           defaultValue={el.serviceDate}
           onChange={
@@ -150,7 +150,7 @@ export default function EditableLine({
       <td>
         R$
         {' '}
-        <input
+        <InputFormTreatment
           type="text"
           defaultValue={el.serviceValue}
           onChange={
