@@ -82,32 +82,3 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
   cd manage-billing/src/frontend && npm run dev
 ```
 
-## Rodando com Docker 
-
-Ceritfique-se de ter o [Docker](https://www.docker.com/) instalado e rodando na sua máquina.
-
-Clone o projeto
-
-```bash
-  git clone git@github.com:doug-0/manage-billing.git
-```
-
-Entre no diretório raiz do projeto
-
-```bash
-  cd manage-billing
-```
-
-Inicie o Docker Compose 
-
-```bash
-  docker-compose up
-```
-
-Para finalizar o Docker Compose 
-
-```bash
-  docker-compose down
-```
-
-
