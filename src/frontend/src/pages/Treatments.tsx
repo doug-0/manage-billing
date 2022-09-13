@@ -6,7 +6,7 @@ import { getAllTreatments } from '../utils/requestAPI';
 import { ITreatments } from '../interface/Treatments';
 import Context from '../context/Context';
 import {
-  ContainerTable, TableTreatment, TotalValue,
+  ContainerTable, DivTable, TableTreatment, TotalValue,
 } from '../styles/Treatments';
 import EditableLine from '../components/EditableLine';
 import ReadingLine from '../components/ReadingLine';
@@ -75,21 +75,22 @@ export default function Treatments(): JSX.Element {
         showFormTreatment && <NewTreatments />
         }
         <FilterByPeriod {...Props} />
-        <TableTreatment>
-          <tbody>
-            <tr>
-              <th>Nome de Paciente</th>
-              <th>Nome do Tratamento</th>
-              <th>Forma de Pagamento</th>
-              <th>Quantidade de parcelas</th>
-              <th>Valor da parcela</th>
-              <th>Período de Pagamento</th>
-              <th>Valor Total</th>
-              <th>Ações</th>
-            </tr>
-          </tbody>
-          <tbody>
-            {
+        <DivTable>
+          <TableTreatment>
+            <thead>
+              <tr>
+                <th>Nome de Paciente</th>
+                <th>Nome do Tratamento</th>
+                <th>Forma de Pagamento</th>
+                <th>Quantidade de parcelas</th>
+                <th>Valor da parcela</th>
+                <th>Período de Pagamento</th>
+                <th>Valor Total</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
               dataTreatments.map((el) => {
                 const props = { showEditLine, el };
                 const {
@@ -110,8 +111,9 @@ export default function Treatments(): JSX.Element {
                 );
               })
             }
-          </tbody>
-        </TableTreatment>
+            </tbody>
+          </TableTreatment>
+        </DivTable>
       </ContainerTable>
       <TotalValue>
         Valor Total:

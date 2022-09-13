@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const TableTreatment = styled.table`
-  width: 85%;
+  /* background-color: red; */
+  width: 1000px;
   border-collapse: collapse;
-  margin-top: 20px;
-  box-shadow: 5px 15px 15px lightgray;
+  text-align: center;
+
+  overflow-x: auto;
   th {
     border: 0.5px solid #ddd;
     height: 70px;
@@ -19,7 +21,7 @@ export const TableTreatment = styled.table`
     height: 50px;
     vertical-align: middle;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 0.5px solid #ddd;
   }
 
   tr {
@@ -32,6 +34,20 @@ export const TableTreatment = styled.table`
       background-color: #f2f2f2;
     }
   }
+`;
+
+export const DivTable = styled.div`
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (max-width: 1000px) {
+    max-width: 100%;
+    overflow: scroll;
+  }
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 5px 15px 15px lightgray;
 `;
 
 export const ContainerTable = styled.div`
