@@ -3,6 +3,13 @@
 
 Neste projeto foi desenvolvido uma aplicação para gerenciar o faturamento de uma dentista chamada Erica.
 
+- Érica é uma dentista e atende seus pacientes apenas com atendimento particular.
+- Como alguns tratamentos dentários são caros e demorados de serem concluídos, o
+pagamento do tratamento do paciente pode ser parcelado.
+- A cada tratamento, ela anota num caderninho quanto e quando cada paciente deve pagar.
+- Para Érica saber quanto vai receber num determinado período, ela precisa somar cada valor
+na calculadora para conseguir esta informação.
+
 Utilizando ReactJs para o Front-end e NodeJs para o Back-end, seguindo a arquitetura de camadas Models, Controllers e Services.
 
 Podendo visualizar todos o seu faturamento, filtrar por um período especifico, adicionar novos registros, atualizar e excluir.
