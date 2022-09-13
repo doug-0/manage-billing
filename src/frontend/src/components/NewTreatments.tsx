@@ -70,7 +70,7 @@ export default function NewTreatments(): JSX.Element {
               })}
             />
           </LabelInputText>
-          <label htmlFor="service-date">
+          <LabelInputText htmlFor="service-date">
             Data do atendimento:
             { ' ' }
             <Calendar
@@ -82,10 +82,10 @@ export default function NewTreatments(): JSX.Element {
                 serviceDate: target.value,
               })}
             />
-          </label>
+          </LabelInputText>
         </ContainerLabel>
         <ContainerLabel>
-          <label htmlFor="input-value-treatment">
+          <LabelInputText htmlFor="input-value-treatment">
             Valor do tratamento:
             { ' ' }
             <InputFormTreatment
@@ -97,7 +97,7 @@ export default function NewTreatments(): JSX.Element {
               })}
               placeholder="Ex.: 159.99"
             />
-          </label>
+          </LabelInputText>
           <label htmlFor="payment-method">
             Forma de pagamento:
             { ' ' }

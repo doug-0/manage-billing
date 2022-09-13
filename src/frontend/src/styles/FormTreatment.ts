@@ -25,15 +25,35 @@ export const InputFormTreatment = styled.input`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 700px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 50px) {
+    font-size: 10px;
+    width: 25px;
+  }
 `;
 
 export const ContainerLabel = styled.div`
   margin-bottom: 30px;
+  @media (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
 `;
 
 export const LabelInputText = styled.label`
   margin-left: 20px;
   margin-right: 20px;
+  @media (max-width: 400px) {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 15px;
+  }
 `;
 
 export const SelectDropDown = styled.select`

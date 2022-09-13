@@ -9,6 +9,17 @@ export const FilterContainer = styled.div`
   border-radius: 15px;
   margin-top: 15px;
   border: 1px solid lightgray;
+
+  @media (max-width: 700px) {
+    width: 90%;
+    font-size: 10px;
+  }
+
+  @media (max-width: 500px) {
+    width: 70%;
+    font-size: 10px;
+    flex-direction: column;
+  }
 `;
 
 export const DivInputDate = styled.div`
@@ -42,5 +53,9 @@ export const ButtonActionFilter = styled.button`
     &:hover {
       background-color:transparent;
     }
+  }
+
+  @media (max-width: 700px) {
+    font-size: 10px;
   }
 `;
