@@ -22,6 +22,25 @@ Podendo visualizar todos o seu faturamento, filtrar por um período especifico, 
 **Back-end:** Node, Typescript, Express, Mongoose, MongoDB, Moment.
 
 
+## Preview da aplicação
+
+<details title="Tela Login" align="left">
+    <br />
+    <summary align="left"><strong><i>Tela de Login</i></strong></summary>
+      <img src="https://user-images.githubusercontent.com/83235564/189977189-8cc0562d-ae98-4102-9722-c66e6a34a74d.png" />
+</details>
+
+<details title="Tela Registros" align="left">
+    <br />
+    <summary align="left"><strong><i>Tela com a lista de todos os registros</i></strong></summary>
+      <img src="https://user-images.githubusercontent.com/83235564/189977470-7798aee3-82ef-45af-b5b4-298811e243f3.png" />
+</details>
+<details title="Filtro e Formulário" align="left">
+    <br />
+    <summary align="left"><strong><i>Filtro e Campos para adicionar regsitro</i></strong></summary>
+      <img src="https://user-images.githubusercontent.com/83235564/189977605-1190d1ec-e5da-4b3f-81f9-695587467d60.png" />
+</details>
+
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu arquivo .env
@@ -81,4 +100,3 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 ```bash
   cd manage-billing/src/frontend && npm run dev
 ```
-
