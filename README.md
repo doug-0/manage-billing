@@ -17,9 +17,9 @@ Podendo visualizar todos o seu faturamento, filtrar por um período especifico, 
 
 ## Stack utilizada
 
-**Front-end:** Vite, React, Typescript, CSS3, React Hooks, Axios, react-router-dom, Docker.
+**Front-end:** Vite, React, Typescript, CSS3, React Hooks, Axios, react-router-dom.
 
-**Back-end:** Node, Typescript, Express, Mongoose, MongoDB, Moment, Docker.
+**Back-end:** Node, Typescript, Express, Mongoose, MongoDB, Moment.
 
 
 ## Variáveis de Ambiente
