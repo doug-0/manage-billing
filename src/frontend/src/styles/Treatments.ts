@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const TableTreatment = styled.table`
-  /* background-color: red; */
   width: 1000px;
   border-collapse: collapse;
   text-align: center;
@@ -17,6 +16,7 @@ export const TableTreatment = styled.table`
   }
 
   td {
+    width: 100px;
     text-align: center;
     height: 50px;
     vertical-align: middle;
