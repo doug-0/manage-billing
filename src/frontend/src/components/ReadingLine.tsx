@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import Swal from 'sweetalert2';
 import { deleteTreatment } from '../utils/requestAPI';
 import { ButtonAction } from '../styles/Treatments';
 import Context from '../context/Context';
@@ -10,6 +11,25 @@ export default function ReadingLine({
   showEditLine,
 }: ITreatment) {
   const { setRefresh, refresh } = useContext(Context);
+
+  const confirmeDelete = async () => {
+    await Swal.fire({
+      title: 'Você tem certeza que deseja excluir este tratamento?',
+      text: 'Você não poderá reverter isso!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Sim, exclua!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteTreatment(el._id);
+        setRefresh(!refresh);
+      }
+    });
+  };
+
   return (
     <>
       <td>{ el.pacientName }</td>
@@ -41,10 +61,7 @@ export default function ReadingLine({
       <td>
         <ButtonAction
           type="button"
-          onClick={() => {
-            deleteTreatment(el._id);
-            setRefresh(!refresh);
-          }}
+          onClick={() => confirmeDelete()}
         >
           <img src="https://img.icons8.com/glyph-neue/25/FA5252/delete.png" alt="delete-icon" />
         </ButtonAction>

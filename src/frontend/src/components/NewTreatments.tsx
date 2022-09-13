@@ -119,7 +119,11 @@ export default function NewTreatments(): JSX.Element {
                 numberParcel: Number(target.value),
               })}
             >
-              <option>----</option>
+              <option
+                value=""
+              >
+                ----
+              </option>
               {
               parcel.map((el) => (
                 <option
@@ -135,6 +139,7 @@ export default function NewTreatments(): JSX.Element {
           </label>
           <Button
             type="button"
+            disabled={(newTreatment.paymentMethod === 'Cartão' && newTreatment.numberParcel === 0)}
             onClick={() => {
               createTreatment(newTreatment);
               setRefresh(!refresh);
