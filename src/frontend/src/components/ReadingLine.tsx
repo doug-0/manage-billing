@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import Swal from 'sweetalert2';
 import { deleteTreatment } from '../utils/requestAPI';
 import { ButtonAction } from '../styles/Treatments';
 import Context from '../context/Context';
@@ -10,6 +11,25 @@ export default function ReadingLine({
   showEditLine,
 }: ITreatment) {
   const { setRefresh, refresh } = useContext(Context);
+
+  const confirmeDelete = async () => {
+    await Swal.fire({
+      title: 'Você tem certeza que deseja excluir este tratamento?',
+      text: 'Você não poderá reverter isso!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Sim, exclua!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteTreatment(el._id);
+        setRefresh(!refresh);
+      }
+    });
+  };
+
   return (
     <>
       <td>{ el.pacientName }</td>
@@ -20,9 +40,10 @@ export default function ReadingLine({
         x
       </td>
       <td>
-        R$
-        {' '}
-        { el.parcelValue.toFixed(2).replace('.', ',') }
+        { el.parcelValue.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }) }
       </td>
       <td>
         { el.serviceDate }
@@ -32,17 +53,15 @@ export default function ReadingLine({
         { el.finalDate }
       </td>
       <td>
-        R$
-        {' '}
-        { el.serviceValue.toFixed(2).replace('.', ',') }
+        { el.serviceValue.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }) }
       </td>
       <td>
         <ButtonAction
           type="button"
-          onClick={() => {
-            deleteTreatment(el._id);
-            setRefresh(!refresh);
-          }}
+          onClick={() => confirmeDelete()}
         >
           <img src="https://img.icons8.com/glyph-neue/25/FA5252/delete.png" alt="delete-icon" />
         </ButtonAction>

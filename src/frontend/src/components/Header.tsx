@@ -23,6 +23,7 @@ export default function Header(): JSX.Element {
       <div>
         <ButtonsHeader
           href="/"
+          onClick={() => localStorage.clear()}
         >
           Logout
         </ButtonsHeader>

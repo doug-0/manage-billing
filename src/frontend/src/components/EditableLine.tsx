@@ -124,6 +124,12 @@ export default function EditableLine({
         </label>
       </td>
       <td>
+        { el.parcelValue.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }) }
+      </td>
+      <td>
         <input
           type="text"
           defaultValue={el.serviceDate}
