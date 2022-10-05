@@ -1,5 +1,5 @@
 
-# Manage Billing
+# [Manage Billing](https://manage-billing-f.vercel.app/login)
 
 Neste projeto foi desenvolvido uma aplicação para gerenciar o faturamento de uma dentista chamada Erica.
 
@@ -9,6 +9,8 @@ pagamento do tratamento do paciente pode ser parcelado.
 - A cada tratamento, ela anota num caderninho quanto e quando cada paciente deve pagar.
 - Para Érica saber quanto vai receber num determinado período, ela precisa somar cada valor
 na calculadora para conseguir esta informação.
+- E-mail: erica@email.com
+- Senha: erica123
 
 Utilizando ReactJs para o Front-end e NodeJs para o Back-end, seguindo a arquitetura de camadas Models, Controllers e Services.
 
